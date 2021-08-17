@@ -1,0 +1,94 @@
+<template>
+    <lightning-card title="New Patient Record" icon-name="standard:people">
+        <lightning-layout multiple-rows="true"> 
+            <lightning-layout-item padding="around-small" size="12">
+                <div>
+                    <h3 class="slds-section__title slds-theme_shade ">
+                        <span class="slds-truncate slds-p-horizontal_x-small" title="Nursing Service">Information</span>
+                    </h3>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input label="Name" placeholder="Name"  type="text" variant="standard" onchange={patientChange} required> </lightning-input>
+                <template if:true={genderPicklist.data}>
+                    <lightning-combobox name="Gender" label="Gender" value={value}
+                                        options={genderPicklist.data.values} onchange={handleChange}>
+                    </lightning-combobox>
+                </template>  
+                <template if:true={maritalPicklist.data}>
+                    <lightning-combobox name="Marital Status" label="Marital Status" value={valueMaritalStatus}
+                                        options={maritalPicklist.data.values} onchange={handleMaritalChange}>
+                    </lightning-combobox>
+                </template>
+                <lightning-input label="Email" placeholder="Email" type="Email" variant="standard" onchange={handleEmailChange}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input label="Medical Record" placeholder="Medical Record"  type="text" variant="standard" required onchange={handlemedicalRecordChange} > </lightning-input>
+                <lightning-input label="Date Of Birth" placeholder="Date Of Birth" type="Date" variant="standard" onchange={handledobChange}></lightning-input>
+                <lightning-input label="Contact Phone" placeholder="Contact Phone" type="Phone" variant="standard" onchange={handlephoneChange}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div>
+                    <h3 class="slds-section__title slds-theme_shade ">
+                        <span class="slds-truncate slds-p-horizontal_x-small" title="Theraphy Service">Theraphy Service</span>
+                    </h3>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <template if:true={specialityPicklist.data}>
+                    <lightning-combobox name="Speciality" label="Speciality" value={specialityChange}
+                                        options={specialityPicklist.data.values} onchange={handleSpecialityChange}>
+                    </lightning-combobox>
+                </template> 
+                <template if:true={preferredTherapyDayPicklist.data}>
+                    <lightning-combobox name="Preferred day of the week" label="Preferred day of the week" value={preferredTherapyDayChange}
+                                        options={preferredTherapyDayPicklist.data.values} onchange={handlepreferredTherapyDayChange}>
+                    </lightning-combobox>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <template if:true={preferredTherapyTimePicklist.data}>
+                    <lightning-combobox name="Preferred time of day" label="Preferred time of day" value={preferredTherapyTimeChange}
+                                        options={preferredTherapyTimePicklist.data.values} onchange={handlepreferredTherapyTimePicklist}>
+                    </lightning-combobox>
+                </template>
+                <lightning-input label="Message" placeholder="Message"  type="text" variant="standard" onchange={handleTherapyMessage}> </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <div>
+                    <h3 class="slds-section__title slds-theme_shade ">
+                        <span class="slds-truncate slds-p-horizontal_x-small" title="Nursing Service">Nursing Service</span>
+                    </h3>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <template if:true={supportiveCarePicklist.data}>
+                    <lightning-combobox name="Supportive Care" label="Supportive Care" value={supportiveCare}
+                                        options={supportiveCarePicklist.data.values} onchange={handlesupportiveCarePicklist}>
+                    </lightning-combobox>
+                </template> 
+                <template if:true={servicePicklist.data}>
+                    <lightning-combobox name="Service" label="Service" value={nursingService}
+                                        options={servicePicklist.data.values} onchange={handleservicePicklist}>
+                    </lightning-combobox>
+                </template> 
+                <template if:true={preferredNursingDayPicklist.data}>
+                    <lightning-combobox name="Preferred day of the week" label="Preferred day of the week" value={preferredNursingDayChange}
+                                        options={preferredNursingDayPicklist.data.values} onchange={handlepreferredNursingDayChange}>
+                    </lightning-combobox>
+                </template>  
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <template if:true={preferredNursingTimePicklist.data}>
+                    <lightning-combobox name="Preferred time of day" label="Preferred time of day" value={preferredNursingTimeChange}
+                                        options={preferredNursingTimePicklist.data.values} onchange={handlepreferredNursingTimePicklist}>
+                    </lightning-combobox>
+                </template>
+                <lightning-input label="Message" placeholder="Message"  type="text" variant="standard" onchange={handleNursingMessageChange}> </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-button  class="slds-align_absolute-center" padding="center" label="Create Patient" onclick={handleCreatePatient} variant="brand" ></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout> 
+    </lightning-card>
+</template>
