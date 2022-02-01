@@ -57,5 +57,26 @@ public class ContactHandler {
             }
         }
     }
+    
+    
+    /***************************************Deletion of Contact increasing No of contact left field on Account*************************/
+    
+    public static void updateContactLeft(List<Contact> conList){
+        Set<id> accountIdSet = new Set<Id>();
+        for(Contact con : conList){
+             if(con.AccountId <> NUll){
+                accountIdSet.add(con.AccountId);
+            }
+            
+            List<Account> accQuery = [Select id, No_Of_Contacts_Left__c from Account Where Id =: accountIdSet];
+             for(Contact conVar: conList){
+                for(Account accVar : accQuery){
+                    Decimal conLeft = accVar.No_Of_Contacts_Left__c + 1;
+                    accVar.No_Of_Contacts_Left__c = conLeft;
+                    update accVar;
+                }
+            }
+        }
+    }
 
 }
